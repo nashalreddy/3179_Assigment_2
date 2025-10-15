@@ -1,0 +1,89 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 400,
+  "height": 400,
+  "background": "#DEE2E4",
+  "title": {
+    "text": "Global Voting Rights Distribution (1789-2024)",
+    "anchor": "middle",
+    "fontSize": 18
+  },
+  "data": {"url": "data/graph-2.csv"},
+  "params": [
+    {
+      "name": "yearSlider",
+      "value": 1789,
+      "bind": {
+        "input": "range",
+        "min": 1789,
+        "max": 2024,
+        "step": 1,
+        "name": "Year: "
+      }
+    }
+  ],
+  "transform": [
+    {"filter": "datum.Year == yearSlider"},
+    {
+      "joinaggregate": [
+        {"op": "sum", "field": "Value", "as": "Total"}
+      ]
+    },
+    {
+      "calculate": "datum.Value / datum.Total",
+      "as": "Percent"
+    }
+  ],
+  "mark": {"type": "arc", "outerRadius": 180, "stroke": "black"},
+  "selection": {
+    "highlight": {
+      "type": "single",
+      "fields": ["Attribute"],
+      "on": "mouseover",
+      "clear": "mouseout"
+    }
+  },
+
+
+  "encoding": {
+    "theta": {"field": "Percent", "type": "quantitative"},
+    "color": {
+      "field": "Attribute",
+      "type": "nominal",
+      "title": "Voting Rights",
+      "scale": {
+        "domain": [
+          "No universal right to vote",
+          "Universal right to vote for men only",
+          "Universal right to vote for men and women"
+        ],
+        "range": ["#d6604d", "#f4a582", "#2166ac"]
+      },
+      "legend": {
+        "orient": "right",
+        "labelExpr": "datum.value === 'No universal right to vote' ? 'None' : datum.value === 'Universal right to vote for men only' ? 'Men only' : 'Men & Women'"
+      }
+    },
+    "opacity": {
+      "condition": {"selection": "highlight", "value": 1},
+      "value": 0.3
+    },
+    "strokeWidth": {
+      "condition": {"selection": "highlight", "value": 2},
+      "value": 1
+    },
+
+    "tooltip": [
+              {"field": "Year", "type": "quantitative"},
+      {"field": "Attribute", "type": "nominal", "title": "Voting Rights"},
+      {
+        "field": "Percent",
+        "type": "quantitative",
+        "title": "Share of Countries",
+        "format": ".1%"
+      }
+
+    ]
+  },
+  "view": {"stroke": null}
+}

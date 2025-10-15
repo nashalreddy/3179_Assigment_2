@@ -1,0 +1,131 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width":640,
+  "height":550,
+  "background": "#DEE2E4",
+  "description": "Interactive dot plot with continent highlighting and population sizing",
+  "title": {
+    "text": "Relationship Between Corruption Perception Index and GDP per Capita (2024)",
+    "anchor": "middle",
+    "fontSize": 18
+  },
+  "data": {
+    "url": "data/graph-14.csv"
+  },
+
+  "layer":[
+    {
+        "mark": "circle",
+  "encoding": {
+    "x": {
+      "field": "Corruption Perception Index",
+      "type": "quantitative",
+      "scale": {"domain": [0, 100]},
+      "axis": {
+        "title": "Corruption Perception Index (0 = High Corruption, 100 = Low Corruption)",
+        "gridColor": "#444444",
+        "gridOpacity": 0.2
+      }
+    },
+    "y": {
+      "field": "GDP per capita",
+      "type": "quantitative",
+      "axis": {
+        "title": "GDP per Capita (USD)",
+        "gridColor": "#444444",
+        "gridOpacity": 0.2
+      },
+        "scale": {"domain": [0, 140000]}
+    },
+    "color": {
+      "field": "Continent",
+      "type": "nominal",
+      "scale": {
+        "domain": ["Africa", "Asia", "Europe", "North America", "South America", "Oceania"],
+        "range": ["#d7191c", "#fdae61", "#ffffbf", "#abd9e9", "#2c7bb6", "#1a4e7a"]
+      },
+      "legend": {
+        "title": "Continent"
+      }
+    },
+    "size": {
+      "field": "Population",
+      "type": "quantitative",
+      "scale": {
+        "type": "threshold",
+        "domain": [1000000, 10000000, 50000000, 100000000, 500000000],
+        "range": [10, 50, 150, 200, 300, 400]
+      },
+      "legend": {
+        "format": ".1s"
+      }
+    },
+    "opacity": {
+      "condition": {
+        "selection": "highlight",
+        "value": 0.8
+      },
+      "value": 0.1
+    },
+    "tooltip": [
+      {
+        "field": "Country",
+        "type": "nominal"
+      },
+                  {
+        "field": "Continent",
+        "type": "nominal"
+      },
+      {
+        "field": "Corruption Perception Index",
+        "type": "quantitative"
+      },
+      {
+        "field": "GDP per capita",
+        "title": "GDP per capita",
+        "type": "quantitative",
+        "format": "$,.0f"
+      },
+
+
+      {
+        "field": "Population",
+        "type": "quantitative",
+        "format": ",.0f"
+      }
+
+    ]
+  },
+  "selection": {
+    "highlight": {
+      "type": "multi",
+      "fields": ["Continent"],
+      "bind": "legend"
+    }
+  }
+    },
+    {
+      "mark":{
+        "type":"text",
+        "align":"right",
+        "baseline":"middle",
+        "dx":-12,
+        "fontSize":11,
+        "fontStyle":"bold"
+      },
+      "encoding": {
+      "x": {"field": "Corruption Perception Index", "type": "quantitative"},
+      "y": {"field": "GDP per capita", "type": "quantitative"},
+      "text": {"field": "Country", "type": "nominal"},
+      "color": {"value": "black"},
+      "opacity": {
+      "condition": {
+      "test": "datum['Country'] == 'Australia' || datum['Country'] == 'United States' || datum['Country'] == 'Singapore' || datum['Country'] == 'Russia'",
+      "value": 1
+      },
+      "value": 0
+      }
+      }
+    }
+  ]
+}

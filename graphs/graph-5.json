@@ -1,0 +1,144 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": {
+    "text": "Voter Turnout (Most Recent Year)",
+    "anchor": "middle",
+    "fontSize": 18,
+    "offset": -50
+  },
+  "width": 515,
+  "height": 500,
+  "background": "#DEE2E4",
+"projection": {
+  "type": "equalEarth",
+  "scale": {
+    "signal": "regionSelector === 'Europe' ? 800 : regionSelector === 'Asia' ? 320 : regionSelector === 'North America' ? 400 : regionSelector === 'South America' ? 390 : regionSelector === 'Africa' ? 370 : regionSelector === 'Oceania' ? 350 : 100"
+  },
+  "center": {
+    "signal": "regionSelector === 'Europe' ? [10,50] : regionSelector === 'Asia' ? [90,20] : regionSelector === 'North America' ? [-100,40] : regionSelector === 'South America' ? [-60,-15] : regionSelector === 'Africa' ? [20,2] : regionSelector === 'Oceania' ? [140,-25] : [0,-10]"
+  },
+  "translate": [{"signal": "width / 2"}, {"signal": "height / 2"}]
+}
+
+
+
+,
+
+  "params": [
+  {
+    "name": "regionSelector",
+    "value": "World",
+    "bind": {
+      "input": "select",
+      "name":"Region Selection:  ",
+      "options": ["World", "Europe", "Asia", "North America", "South America", "Africa", "Oceania"],
+      "labels": ["World", "Europe", "Asia", "North America", "South America", "Africa", "Oceania"]
+    }
+  }
+],
+
+  "data": {
+    "url": "data/ne_110m.json",
+    "format": {"type": "topojson", "feature": "ne_110m_admin_0_countries"}
+  },
+
+  
+
+  "transform": [
+    {
+      "lookup": "properties.ISO_A3",
+      "from": {
+        "data": {"url": "data/graph-5.csv", "format": {"type": "csv"}},
+        "key": "Code",
+        "fields": ["Entity", "Max of Year", "Voter turnout of voting-age population"]
+      }
+    },
+    {
+      "calculate": "'Not Available'",
+      "as": "Data"
+    }
+  ],
+
+  "layer": [
+        {
+      "data": {"sphere": true},
+      "mark": {"type": "geoshape", "fill": "#a3d0f7", "stroke": null}
+    },
+    {
+      "data": {
+        "url": "data/ne_110m.json",
+        "format": {"type": "topojson", "feature": "ne_110m_graticules_30"}
+      },
+      "mark": {"type": "geoshape", "stroke": "#aaa", "strokeWidth": 0.5, "filled": false}
+    },
+    {
+      "mark": {"type": "geoshape", "fill": "#d9d9d9", "stroke": "#404040", "strokeWidth": 0.5},
+      "transform": [{"filter": "datum['Voter turnout of voting-age population'] == null"}],
+      "encoding": {
+        "tooltip": [
+          {"field": "properties.NAME", "type": "nominal", "title": "Country"},
+          {"field": "Data", "type": "nominal", "title": ""}
+        ]
+      }
+    },
+    {
+      "selection": {
+        "hoverCountry": {
+          "type": "single",
+          "on": "mouseover",
+          "empty": "none",
+          "fields": ["properties.NAME"]
+        }
+      },
+      "mark": {"type": "geoshape", "stroke": "#404040", "strokeWidth": 0.5},
+      "transform": [{"filter": "datum['Voter turnout of voting-age population'] != null"}],
+        "transform": [
+    {
+      "calculate": "datum['Voter turnout of voting-age population'] / 100",
+      "as": "TurnoutFraction"
+    }
+  ],
+      "encoding": {
+        "color": {
+          "field": "Voter turnout of voting-age population",
+          "type": "quantitative",
+          "scale": {
+            "type": "linear",
+            "domain": [0, 100],
+                "range": [
+                "#800026",
+                "#bd0026",
+                "#e31a1c",
+                "#fc4e2a",
+                "#fd8d3c",
+                "#feb24c",
+                "#fed976",
+                "#ffeda0",
+                "#ffffcc",
+                "#FFFFFE"
+                ]
+          },
+          "legend": {
+            "title": "Voter Turnout (%)",
+            "orient":"bottom",
+            "offset":-50
+        }
+        },
+        "strokeWidth": {
+          "condition": {"selection": "hoverCountry", "value": 2},
+          "value": 0.5
+        },
+        "tooltip": [
+          {"field": "properties.NAME", "type": "nominal", "title": "Country"},
+          {"field": "Max of Year", "type": "quantitative", "title": "Year"},
+          {
+            "field": "TurnoutFraction",
+            "type": "quantitative",
+            "format": ".1%",
+            "title": "Voter Turnout"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,153 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 750,
+  "height": 300,
+  "background": "#DEE2E4",
+  "title": {
+    "text": "Countries that are Autocracies and Democracies (1789-2024)",
+    "anchor": "middle",
+    "fontSize": 18
+  },
+  "layer": [
+    {
+      "data": {"url": "data/graph-1.csv"},
+      "transform": [
+        {
+          "calculate": "datum.Attribute == 'Number of closed autocracies' ? 'Closed Autocracies' : datum.Attribute == 'Number of electoral autocracies' ? 'Electoral Autocracies' : datum.Attribute == 'Number of electoral democracies' ? 'Electoral Democracies' : datum.Attribute == 'Number of liberal democracies' ? 'Liberal Democracies' : datum.Attribute",
+          "as": "RegimeType"
+        },
+        {
+          "window": [{"op": "sum", "field": "Value", "as": "Total"}],
+          "frame": [null, null],
+          "groupby": ["Year"]
+        },
+        {
+          "calculate": "datum.Value / datum.Total",
+          "as": "Percent"
+        }
+      ],
+      "mark": {"type": "area", "stroke": "black"},
+      "selection": {
+        "highlight": {
+          "type": "single",
+          "fields": ["RegimeType"],
+          "on": "mouseover",
+          "clear": "mouseout"
+        }
+      },
+      "encoding": {
+        "x": {"field": "Year", "type": "temporal", "title": "Year"},
+        "y": {
+          "field": "Value",
+          "type": "quantitative",
+          "stack": "normalize",
+          "axis": {"format": "0%", "title": "Share of Countries"}
+        },
+        "color": {
+          "field": "RegimeType",
+          "type": "nominal",
+          "title": "Country Type",
+          "scale": {
+            "domain": [
+              "Closed Autocracies",
+              "Electoral Autocracies",
+              "Electoral Democracies",
+              "Liberal Democracies"
+            ],
+            "range": ["#d6604d", "#f4a582", "#92c5de", "#2166ac"]
+          },
+          "legend": {"orient": "bottom"}
+        },
+        "opacity": {
+          "condition": {"selection": "highlight", "value": 1},
+          "value": 0.3
+        },
+        "strokeWidth": {
+          "condition": {"selection": "highlight", "value": 1},
+          "value": 0.5
+        },
+        "tooltip": [
+          {"field": "Year", "type": "temporal"},
+          {"field": "RegimeType", "type": "nominal", "title": "Country Type"},
+          {"field": "Percent", "type": "quantitative", "format": ".1%", "title":"Share of Countries"}
+        ]
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {"Year": 1990, "Percent": 0.6, "text": "Collapse of USSR"}
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": -45,
+        "dy": -110,
+        "fontWeight": "bold",
+        "fontSize": 13,
+        "color": "black"
+      },
+      "encoding": {
+        "x": {"field": "Year", "type": "temporal"},
+        "y": {"field": "Percent", "type": "quantitative"},
+        "text": {"field": "text", "type": "nominal"}
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {"date": "1991-12-26"}
+        ]
+      },
+      "mark": {
+        "type": "rule",
+        "color": "#1a1a1a",
+        "strokeWidth": 2,
+        "strokeDash": [4,2]
+      },
+      "encoding": {
+        "x": {"field": "date", "type": "temporal"}
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {"Year": 1990, "Percent": 0.6, "text": "End of WW2"}
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": -160,
+        "dy": -110,
+        "fontWeight": "bold",
+        "fontSize": 13,
+        "color": "black"
+      },
+      "encoding": {
+        "x": {"field": "Year", "type": "temporal"},
+        "y": {"field": "Percent", "type": "quantitative"},
+        "text": {"field": "text", "type": "nominal"}
+      }
+    },
+
+
+    {
+      "data": {
+        "values": [
+          {"date": "1945-09-02"}
+        ]
+      },
+      "mark": {
+        "type": "rule",
+        "color": "#1a1a1a",
+        "strokeWidth": 2,
+        "strokeDash": [4,2]
+      },
+      "encoding": {
+        "x": {"field": "date", "type": "temporal"}
+      }
+    }
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Bar chart showing share of firms asked to pay a bribe for different attributes.",
+  "width": 370,
+  "height": 300,
+  "background": "#DEE2E4",
+  "title": {
+    "text": "Firms Asked to Pay a Bribe by Interaction (2024)",
+    "anchor": "middle",
+    "fontSize": 18
+  },
+  "data": {
+    "values": [
+      {"Attribute": "Government contract", "Value": 16.3},
+      {"Attribute": "Construction permit", "Value": 15.3},
+      {"Attribute": "To \"get things done\"", "Value": 12.8},
+      {"Attribute": "Electrical connection", "Value": 11.6},
+      {"Attribute": "Water connection", "Value": 10.4},
+      {"Attribute": "Tax official meeting", "Value": 8.7},
+      {"Attribute": "Import licence", "Value": 8.4},
+      {"Attribute": "Operating licence", "Value": 8.2}
+    ]
+  },
+  "transform": [
+    {
+      "calculate": "datum.Value + '%'",
+      "as": "ValueLabel"
+    }
+  ],
+  "layer": [
+    {
+      "mark": {
+        "type": "bar",
+        "color": "#d6604d",
+        "stroke": "black",
+        "size": 30
+      },
+      "selection": {
+        "highlight": {
+          "type": "single",
+          "fields": ["Attribute"],
+          "on": "mouseover",
+          "clear": "mouseout"
+        }
+      },
+      "encoding": {
+        "x": {
+          "field": "Attribute",
+          "type": "nominal",
+          "sort": [
+            "Government contract",
+            "Construction permit",
+            "To \"get things done\"",
+            "Electrical connection",
+            "Water connection",
+            "Tax official meeting",
+            "Import licence",
+            "Operating licence"
+          ],
+          "axis": {"title": "Interaction Type", "labelAngle": -45}
+        },
+        "y": {
+          "field": "Value",
+          "type": "quantitative",
+          "axis": {"title": "Share of Firms (%)"}
+        },
+        "tooltip": [
+          {"field": "Attribute", "type": "nominal", "title": "Interaction Type"},
+          {"field": "ValueLabel", "type": "nominal", "title": "Share of Firms"}
+        ],
+        "opacity": {
+          "condition": {"selection": "highlight", "value": 1},
+          "value": 0.3
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "dx": -14,
+        "dy": -8,
+        "align": "left"
+      },
+      "encoding": {
+        "x": {
+          "field": "Attribute",
+          "type": "nominal",
+          "sort": [
+            "Government contract",
+            "Construction permit",
+            "To \"get things done\"",
+            "Electrical connection",
+            "Water connection",
+            "Tax official meeting",
+            "Import licence",
+            "Operating licence"
+          ]
+        },
+        "y": {"field": "Value", "type": "quantitative"},
+        "text": {"field": "ValueLabel", "type": "nominal"}
+      }
+    }
+  ]
+}

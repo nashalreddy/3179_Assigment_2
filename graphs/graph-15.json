@@ -1,0 +1,120 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Electoral Democracy vs Women's Political Empowerment",
+    "anchor": "middle",
+    "fontSize": 18
+  },
+  "width": 460,
+  "height": 460,
+  "background": "#DEE2E4",
+  "data": {
+    "url": "data/graph-15.csv"
+  },
+  "params": [
+    {
+      "name": "Year_select",
+      "value": 1789,
+      "bind": {
+        "input": "range",
+        "min": 1789,
+        "max": 2024,
+        "step": 1,
+        "name": "Select Year: "
+      }
+    }
+  ],
+  "transform": [
+    {
+      "filter": "datum.Year == Year_select"
+    }
+  ],
+  "layer": [
+    {
+      "mark": {
+        "type": "circle",
+        "opacity": 0.7,
+        "size": 80,
+        "stroke": "black",
+        "strokeWidth": 0.2
+      },
+      "encoding": {
+        "x": {
+          "field": "Electoral Democracy (Central Estimate)",
+          "type": "quantitative",
+          "axis": {
+            "title": "Electoral Democracy  (0 = Less Democratic, 1 = Most Democratic)",
+            "values": [0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1],
+            "grid": true,
+            "gridColor": "rgba(153,153,153,0.3)",
+            "gridWidth": 1.5
+          },
+          "scale": {"domain": [0, 1]}
+        },
+        "y": {
+          "field": "Women Political Empowerment (Central Estimate)",
+          "type": "quantitative",
+          "axis": {
+            "title": "Women Political Empowerment (0 = Least Empowerment, 1 = Most Empowerment)",
+            "values": [0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1],
+            "grid": true,
+            "gridColor": "rgba(153,153,153,0.3)",
+            "gridWidth": 1.5
+          },
+          "scale": {"domain": [0, 1]}
+        },
+        "color": {
+          "field": "Region",
+          "type": "nominal",
+          "scale": {
+            "domain": ["Africa", "Asia", "Europe", "North America", "South America", "Oceania"],
+            "range": ["#d7191c", "#fdae61", "#ffffbf", "#abd9e9", "#2c7bb6", "#1a4e7a"]
+          },
+          "legend": {"title": "Region", "orient":"bottom"}
+        },
+        "opacity": {
+          "condition": {"selection": "highlightRegion", "value": 0.8},
+          "value": 0.05
+        },
+        "tooltip": [
+          {"field": "Country", "type": "nominal"},
+          {"field": "Region", "type": "nominal"},
+          {"field": "Year", "type": "quantitative"},
+          {"field": "Electoral Democracy (Central Estimate)", "type": "quantitative", "title":"Electoral Democracy"},
+          {"field": "Women Political Empowerment (Central Estimate)", "type": "quantitative", "title":"Women's Empowerment"}
+        ]
+      },
+      "selection": {
+        "highlightRegion": {
+          "type": "multi",
+          "fields": ["Region"],
+          "bind": "legend"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type":"text",
+        "align":"left",
+        "baseline":"middle",
+        "dx":8,
+        "dy":1,
+        "fontSize":11,
+        "fontWeight":"bold"
+      },
+      "encoding": {
+        "x": {"field": "Electoral Democracy (Central Estimate)", "type": "quantitative"},
+        "y": {"field": "Women Political Empowerment (Central Estimate)", "type": "quantitative"},
+        "text": {"field": "Country", "type": "nominal"},
+        "color": {"value": "black"},
+        "opacity": {
+          "condition": {
+            "test": "datum['Country'] == 'Afghanistan' || datum['Country'] == 'Australia' || datum['Country'] == 'United States' || datum['Country'] == 'China' || datum['Country'] == 'Denmark'",
+            "value": 1
+          },
+          "value": 0
+        }
+      }
+    }
+  ]
+}

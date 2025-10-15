@@ -1,0 +1,178 @@
+Country,Code,Corruption_Index
+Afghanistan,AFG,-1.326
+Albania,ALB,-0.321
+Algeria,DZA,-0.548
+Angola,AGO,-1.074
+Argentina,ARG,1.082
+Armenia,ARM,0.089
+Australia,AUS,1.71
+Austria,AUT,0.608
+Azerbaijan,AZE,-1.458
+Bahrain,BHR,-1.325
+Bangladesh,BGD,-0.886
+Barbados,BRB,1.906
+Belarus,BLR,-2.054
+Belgium,BEL,3.313
+Benin,BEN,-0.203
+Bhutan,BTN,1.905
+Bolivia,BOL,1.416
+Bosnia and Herzegovina,BIH,0.23
+Botswana,BWA,0.539
+Brazil,BRA,2.043
+Bulgaria,BGR,0.353
+Burkina Faso,BFA,0.523
+Burundi,BDI,-1.933
+Cambodia,KHM,-0.525
+Cameroon,CMR,-0.576
+Canada,CAN,2.905
+Cape Verde,CPV,2.787
+Central African Republic,CAF,-0.35
+Chad,TCD,-1.164
+Chile,CHL,1.884
+China,CHN,-2.232
+Colombia,COL,1.078
+Comoros,COM,0.051
+Congo,COG,-0.554
+Costa Rica,CRI,1.964
+Cote d'Ivoire,CIV,0.772
+Croatia,HRV,0.494
+Cuba,CUB,-2.104
+Cyprus,CYP,2.744
+Czechia,CZE,2.069
+Democratic Republic of Congo,COD,-0.181
+Denmark,DNK,3.291
+Djibouti,DJI,-0.089
+Dominican Republic,DOM,0.603
+East Timor,TLS,0.878
+Ecuador,ECU,0.826
+Egypt,EGY,-1.584
+El Salvador,SLV,0.227
+Equatorial Guinea,GNQ,-1.618
+Eritrea,ERI,-3.05
+Estonia,EST,2.469
+Eswatini,SWZ,-1.288
+Ethiopia,ETH,0.738
+Fiji,FJI,1.013
+Finland,FIN,2.532
+France,-99,3.137
+Gabon,GAB,0.049
+Gambia,GMB,1.347
+Georgia,GEO,1.317
+Germany,DEU,3.233
+Ghana,GHA,1.134
+Greece,GRC,1.496
+Guatemala,GTM,0.822
+Guinea,GIN,-1.236
+Guinea-Bissau,GNB,0.188
+Guyana,GUY,1.919
+Haiti,HTI,-1.182
+Honduras,HND,1.067
+Hong Kong,HKG,0.876
+Hungary,HUN,-0.207
+Iceland,ISL,2.729
+India,IND,0.058
+Indonesia,IDN,-0.084
+Iran,IRN,-1.465
+Iraq,IRQ,-0.129
+Ireland,IRL,2.533
+Israel,ISR,1.155
+Italy,ITA,2.202
+Jamaica,JAM,1.478
+Japan,JPN,2.072
+Jordan,JOR,-0.486
+Kazakhstan,KAZ,-0.995
+Kenya,KEN,1.151
+Kosovo,OWID_KOS,1.414
+Kuwait,KWT,0.156
+Kyrgyzstan,KGZ,-0.127
+Laos,LAO,-2.362
+Latvia,LVA,2.347
+Lebanon,LBN,-0.138
+Lesotho,LSO,0.995
+Liberia,LBR,0.475
+Libya,LBY,0.763
+Lithuania,LTU,2.93
+Luxembourg,LUX,2.805
+Madagascar,MDG,0.001
+Malawi,MWI,1.406
+Malaysia,MYS,0.998
+Maldives,MDV,1.201
+Mali,MLI,0.552
+Malta,MLT,1.031
+Mauritania,MRT,-0.268
+Mauritius,MUS,1.011
+Mexico,MEX,0.257
+Moldova,MDA,-0.51
+Mongolia,MNG,-0.3
+Montenegro,MNE,0.085
+Morocco,MAR,0.31
+Mozambique,MOZ,0.171
+Myanmar,MMR,-1.167
+Namibia,NAM,1.359
+Nepal,NPL,1.091
+Netherlands,NLD,2.701
+New Zealand,NZL,2.515
+Nicaragua,NIC,-2.183
+Niger,NER,0.184
+Nigeria,NGA,0.889
+North Korea,PRK,-3.014
+North Macedonia,MKD,0.097
+Norway,NOR,2.736
+Oman,OMN,-0.914
+Pakistan,PAK,-0.215
+Panama,PAN,1.753
+Papua New Guinea,PNG,0.536
+Paraguay,PRY,-0.219
+Peru,PER,1.327
+Philippines,PHL,0.295
+Poland,POL,1.657
+Portugal,PRT,1.29
+Qatar,QAT,-2.205
+Romania,ROU,-0.436
+Russia,RUS,-2.724
+Rwanda,RWA,-0.04
+Sao Tome and Principe,STP,0.164
+Saudi Arabia,SAU,-1.545
+Senegal,SEN,1.717
+Serbia,SRB,-0.943
+Seychelles,SYC,0.255
+Sierra Leone,SLE,0.198
+Singapore,SGP,1.404
+Slovakia,SVK,1.697
+Slovenia,SVN,1.078
+Solomon Islands,SLB,0.498
+Somalia,SOM,-1.135
+Somaliland,OWID_SML,0.255
+South Africa,ZAF,2.196
+South Korea,KOR,1.056
+South Sudan,SSD,0.502
+Spain,ESP,1.131
+Sri Lanka,LKA,1.736
+Sudan,SDN,-0.064
+Suriname,SUR,0.757
+Sweden,SWE,2.651
+Switzerland,CHE,3.017
+Syria,SYR,-1.728
+Taiwan,TWN,0.728
+Tajikistan,TJK,-1.812
+Tanzania,TZA,0.212
+Thailand,THA,0.632
+Togo,TGO,-0.84
+Trinidad and Tobago,TTO,2.198
+Tunisia,TUN,1.202
+Turkey,TUR,-1.012
+Turkmenistan,TKM,-2.701
+Uganda,UGA,1.274
+Ukraine,UKR,-0.491
+United Arab Emirates,ARE,-1.506
+United Kingdom,GBR,2.358
+United States,USA,1.947
+Uruguay,URY,2.722
+Uzbekistan,UZB,-0.842
+Vanuatu,VUT,1.913
+Venezuela,VEN,1.131
+Vietnam,VNM,0.731
+Yemen,YEM,-0.379
+Zambia,ZMB,0.798
+Zanzibar,OWID_ZAN,0.793
+Zimbabwe,ZWE,-0.443

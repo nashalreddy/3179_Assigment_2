@@ -1,0 +1,121 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 400,
+  "height": 400,
+  "background": "#DEE2E4",
+  "title": {
+    "text": "Share of Population with Suffrage (1790-2024)",
+    "anchor": "middle",
+    "fontSize": 18,
+    "offset": 0
+  },
+  "layer": [
+    {
+      "data": {
+        "url": "data/graph-17.csv"
+      },
+      "transform": [
+        {"calculate": "datum['Share of population with suffrage'] / 100", "as": "ShareFraction"}
+      ],
+      "mark": {
+        "type": "line",
+        "point": false,
+        "strokeWidth": 2.5,
+        "opacity": 0.85
+      },
+      "encoding": {
+        "x": {
+          "field": "Year",
+          "type": "temporal",
+          "axis": {
+            "title": "Year",
+            "grid": true,
+            "gridColor": "rgba(153,153,153,0.3)",
+            "gridWidth": 1.5
+          }
+        },
+        "y": {
+          "field": "Share of population with suffrage",
+          "type": "quantitative",
+          "axis": {
+            "title": "Share of population (%)",
+            "grid": true,
+            "gridColor": "rgba(153,153,153,0.3)",
+            "gridWidth": 1.5
+          }
+        },
+        "color": {
+          "field": "Region",
+          "type": "nominal",
+          "title": "Region",
+          "scale": {
+            "domain": ["Africa", "Asia", "Europe", "North America", "South America", "Oceania"],
+            "range": ["#d7191c", "#fdae61", "#ffffbf", "#abd9e9", "#2c7bb6", "#1a4e7a"]
+          },
+          "legend": {"title": "Region", "orient": "bottom", "symbolStrokeWidth": 5}
+        },
+        "opacity": {
+          "condition": {"selection": "highlightRegion", "value": 1},
+          "value": 0.2
+        },
+        "tooltip": [
+          {"field": "Region", "type": "nominal"},
+          {"field": "Year", "type": "temporal"},
+          {
+            "field": "ShareFraction",
+            "title": "Share of population",
+            "type": "quantitative",
+            "format": ".1%"
+          }
+        ]
+      },
+      "selection": {
+        "highlightRegion": {
+          "type": "multi",
+          "fields": ["Region"],
+          "bind": "legend",
+          "on": "click"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {"date": "1918-11-11", "text": "Start of WW1"}
+        ]
+      },
+      "mark": {
+        "type": "rule",
+        "color": "#1a1a1a",
+        "strokeWidth": 2,
+        "strokeDash": [4,2]
+      },
+      
+      "encoding": {
+        "x": {"field": "date", "type": "temporal"},
+        "tooltip": {"field": "text", "type": "nominal"}
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {"date": "1914-07-28", "y": 0.8, "text": "End of WWI"}
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": -70,
+        "dy": -385,
+        "fontWeight": "bold",
+        "fontSize": 12,
+        "color": "black"
+      },
+      "encoding": {
+        "x": {"field": "date", "type": "temporal"},
+        "y": {"field": "y", "type": "quantitative"},
+        "text": {"field": "text", "type": "nominal"}
+      }
+    }
+  ]
+}

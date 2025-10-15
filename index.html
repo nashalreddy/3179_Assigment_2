@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html>
+
+
+
+<head>
+  <title>Multiple Visualisations | An Example</title>
+  <!-- Import Vega & Vega-Lite (does not have to be from CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
+
+  <!-- Import pure.css -->
+  <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css"
+    integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Google font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+
+  <!-- CSS file -->
+  <link rel="stylesheet" type="text/css" href="css/styles.css" media="all">
+
+  <!-- Title Font -->
+  <style>
+  @import url('https://fonts.googleapis.com/css2?family=BBH+Sans+Bogle&display=swap');
+  </style>
+
+  <style>
+  @import url('https://fonts.googleapis.com/css2?family=BBH+Sans+Bogle&family=Oswald:wght@200..700&display=swap');
+  </style>
+
+
+</head>
+
+<body>
+
+  <div class="page">
+
+
+    <!-- pure grid group -->
+    <!-- pure grid group -->
+    <div class="pure-g">
+      <div class="pure-u-1-1 title-chunk">
+        <h1>THE COST OF CORRUPTION</h1>
+      </div>
+    </div>
+
+    <div class="paragraph-chunk">
+      <div class="pure-g">
+        <div class="pure-u-1-1">
+          <h2>THE HIDDEN FEE</h2>
+        </div>
+      </div>
+    </div>
+    
+    <!-- end pure grid group -->
+    <!-- pure grid group -->
+    <!-- pure grid group -->
+    <div class="paragraph-chunk">
+      <div class="pure-g">
+        <div class="pure-u-1-2">
+          <div class="description description-left">
+            <h3>WHAT IS CORRUPTION?</h3>
+            <p>Corruption is the misuse of public power or authority for personal or private gain. <br><br>
+The Corruption Perceptions Index (CPI) measures how corrupt a country’s public sector is perceived to be, based on expert assessments and opinion surveys. It scores countries from 0 to 100, where higher values indicate lower levels of perceived corruption.
+            </p>
+          </div>
+        </div>
+        <div class="pure-u-1-2">
+          <div class="description description-right">
+            <h3>REGIONAL TRENDS</h3>
+<p>Across regions, Europe generally shows lower corruption levels, while Africa, South America, and Central Asia face higher perceptions of corruption. These disparities often mirror economic conditions, as corruption hinders growth, deters investment, reduces public trust, limits innovation, and weakens overall market efficiency, ultimately restricting development and deepening income inequality across nations.</p>
+          </div>
+        </div>
+        <div class="pure-u-1-1">
+          <div id="vis4" class="vis-container"></div>
+          <br><br>
+        </div>
+
+         <div class="pure-u-1-2">
+          <div class="description description-left">
+            <h3>MONEY AND CORRUPTION</h3>
+            <p>The graph of Corruption Perception Index versus GDP per capita shows a clear upward trend, indicating that wealthier countries generally experience lower perceived corruption. African countries cluster at low GDP per capita and high corruption perception, highlighting challenges in poorer economies. Asian countries largely follow the trend, where increasing wealth corresponds with decreasing corruption. European countries also follow this pattern, with a steep rise at the high end of the CPI, suggesting that substantial reductions in corruption are associated with much higher GDP per capita, mainly in smaller-population nations.</p>
+          </div>
+        </div>        
+        <div class="pure-u-1-2">
+          <div class="description description-right">
+<p><br><br><br><br>Singapore scores highest on the Corruption Perceptions Index, combining high GDP per capita with very low perceived corruption. Russia stands out for having relatively high GDP per capita despite high perceived corruption, placing it above other countries with similar corruption levels. It is important to note that GDP per capita inherently disadvantages countries with large populations. Among nations with over 100 million people, the United States stands far above the rest in GDP per capita, highlighting how population size and economic output interact in this measure.</p>
+          </div>
+        </div>
+
+        <div class="pure-u-1-1">
+          <div id="vis14" class="vis-container"></div>
+        </div>
+
+        <div class="pure-g">
+        <div class="pure-u-1-3">
+          <h3>BRIBERY</h3>
+<p>A bribe is an illegal or unethical payment or favor given to influence someone in a position of power.<br><br>This chart shows the share of firms worldwide that report being asked to pay a bribe. It highlights that government contracts are the most common source of bribery requests, followed closely by construction permits, showing which business activities are most frequently associated with bribery demands.</p>
+        </div>
+        <div class="pure-u-2-3">
+          <div class="description description-right">
+            <br><br><div id="vis16" class="vis-container"></div>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+    <!-- end pure grid group -->
+
+
+
+
+    <div class="paragraph-chunk">
+      <div class="pure-g">
+        <div class="pure-u-1-1">
+          <h2>THE RIGHT TO VOTE</h2>
+        </div>
+      </div>
+    </div>
+
+    <!-- pure grid group -->
+    <div class="paragraph-chunk">
+      <div class="pure-g">
+        <div class="pure-u-1-2">
+          <div class="description description-left">
+            <h3>AUTOCRACIES AND DEMOCRACIES</h3>
+            <p>Autocracies and democracies differ in how political power is obtained and exercised. In autocracies, power is concentrated in a single ruler or small group, with little citizen participation in decision-making. In contrast, democracies feature broader political participation, competitive elections, and protections for civil liberties and political rights. These differences also influence corruption: concentrated power and weak accountability in autocracies create conditions where bribery and other illicit practices are more likely, whereas democratic institutions and transparency mechanisms help limit them.</p>
+          </div>
+        </div>
+        <div class="pure-u-1-2">
+          <div class="description description-right">
+            <br><br><br><br>
+<p>Following World War II, the number of electoral autocracies rose sharply as many countries adopted limited or controlled electoral systems under authoritarian regimes. Furthermore, the collapse of the USSR in the early 1990s led to a significant increase in electoral democracies, as former Soviet states and other nations transitioned toward competitive elections and broader political participation. In recent years, however, there has been a slight decline in liberal democracies, reflecting challenges to democratic institutions and the erosion of civil liberties in some countries.</p>
+          </div>
+        </div>
+        <div class="pure-u-1-1">
+          <div id="vis1" class="vis-container"></div>
+          <br><br>
+        </div>
+
+         <div class="pure-g">
+        <div class="pure-u-1-3">
+          <h3>SUFFRAGE</h3>
+          <p>Suffrage is the right to vote in political elections, allowing citizens to participate in choosing their representatives and influencing government decisions.</p>
+<p>The graph shows that after World War I, suffrage expanded dramatically in Europe, largely due to women gaining the right to vote, marking a shift toward broader political participation. Other regions followed later, though Asia experienced a flatter curve with slower, gradual increases. In Africa, enfranchisement around 1945 caused a sharp rise. Expanding suffrage can also reduce corruption by increasing accountability, promoting transparent governance, and giving citizens greater oversight over public officials.</p>
+        </div>
+        <div class="pure-u-2-3">
+          <div class="description description-right">
+            <br><br>
+            <div id="vis18" class="vis-container"></div>
+          </div>
+        </div>
+      </div>
+
+        <div class="pure-g">
+        <div class="pure-u-1-3">
+          <h3>VOTER TURNOUT</h3>
+<p>The map below shows reported voter turnout as a share of the voting-age population for the most recent year available.</p>
+<p>South America stands out for high voter turnout despite high perceived corruption, while Africa exhibits lower participation in the context of widespread corruption. Europe generally maintains strong turnout. Differences in voter engagement also reflect distinct electoral policies, for example, Australia’s compulsory voting boosts participation, whereas countries like the United States, with non-compulsory voting, often see lower turnout. A blend of local policies, cultural norms and regional beliefs shape voter turnout maps such as this.</p>
+        </div>
+        <div class="pure-u-2-3">
+          <div class="description description-right">
+            <div id="vis5" class="vis-container"></div>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+
+
+    <!-- end pure grid group -->
+    <div class="paragraph-chunk">
+      <div class="pure-g">
+        <div class="pure-u-1-1">
+          <h2>THE FIGHT FOR WOMEN</h2>
+        </div>
+      </div>
+    </div>
+
+        <!-- pure grid group -->
+    <div class="paragraph-chunk">
+      <div class="pure-g">
+        <div class="pure-u-1-3">
+          <h3>VOTING RIGHTS</h3>
+          <p>Voting rights have not always been guaranteed to all—access to the ballot has often been limited by gender, wealth, or social status.</p>
+        <p>This pie chart shows how voting rights have changed over time, from no suffrage, to men only, and eventually to both men and women, with a slider to explore different years. The expansion of suffrage, particularly women gaining the right to vote, represents a hard-won reform achieved through persistent advocacy and social struggle. Greater inclusion in the electorate not only broadened political participation but also strengthened accountability, making it harder for corrupt practices to go unchecked and fostering more transparent governance.</p>
+        </div>
+        <div class="pure-u-2-3">
+          <div class="description description-right">
+            <br><br>
+            <div id="vis19" class="vis-container"></div>
+          </div>
+        </div>
+        <div class="pure-u-1-3">
+          <h3>HAVING A SAY</h3>
+          <p>This scatterplot shows countries’ Electoral Democracy Index ratings plotted against Women’s Political Empowerment Index ratings over time, allowing comparison of political inclusiveness and gender representation across countries and years.</p>
+<p>The fitted linear line suggests a positive association: higher women’s empowerment tends to occur in countries with stronger electoral democracy. Some countries deviate from this pattern—China has limited electoral democracy despite notable women’s empowerment. Afghanistan, affected by Taliban occupation after 2021, falls to the lowest position. Most European countries have gradually progressed, while many African nations still fall further behind the line. Greater women’s political empowerment and electoral participation can help reduce corruption by increasing accountability and promoting transparent governance.</p>
+        </div>
+        <div class="pure-u-2-3">
+          <div class="description description-right">
+            <br><br>
+            <div id="vis15" class="vis-container"></div>
+          </div>
+        </div>
+         <div class="pure-u-1-2">
+          <div class="description description-left">
+            <h3>WHERE WE STAND</h3>
+            <p>The Women's Political Empowerment Index measures how fully women can exercise civil liberties, engage in civil society, and hold political office. Scores range from 0 (low empowerment) to 1 (high empowerment), with higher values indicating greater political participation and representation. </p>
+          </div>
+        </div>        
+        <div class="pure-u-1-2">
+          <div class="description description-right">
+            <br><br><br><br>
+<p>Europe roughly has the highest levels of women's political empowerment, reflecting strong participation and representation. In contrast, the Middle East and North Africa continue to lag behind, with lower scores indicating persistent barriers and slower progress in advancing women's political rights.</p>
+          </div>
+        </div>
+        <div class="pure-u-1-1">
+          <div id="vis9" class="vis-container"></div>
+          <br><br>
+        </div>
+      </div>
+    </div>
+    <!-- end pure grid group -->
+
+    <!-- end pure grid group -->
+    <div class="paragraph-chunk">
+      <div class="pure-g">
+        <div class="pure-u-1-1">
+          <h2>CONCLUSION</h2>
+        </div>
+      </div>
+    </div>
+
+<div class="paragraph-chunk">
+      <div class="pure-g">
+        <div class="pure-u-1-2">
+          <div class="description description-left">
+            <h3>WHAT DOES IT COST?</h3>
+            <p>Corruption carries far-reaching costs beyond immediate financial losses. It undermines economic growth, deters investment, and erodes public trust, limiting innovation and weakening market efficiency. Countries with higher wealth and stronger democratic institutions generally experience lower corruption, while autocracies and less inclusive systems create environments where bribery and misuse of power thrive. Expanding suffrage and promoting women’s political empowerment are not only social achievements but also crucial tools for enhancing accountability, increasing transparency, and reducing corrupt practices.</p>
+          </div>
+        </div>
+        <div class="pure-u-1-2">
+          <div class="description description-right">
+            <br><br><br><br>
+          <p>Regional comparisons highlight persistent disparities: Europe leads in governance, voter participation, and women’s empowerment, while many African, Asian, and Middle Eastern nations continue to face challenges in curbing corruption and broadening political inclusion. Ultimately, the cost of corruption is measured not only in lost resources but also in restricted civic rights, unequal participation, weakened democratic institutions, and diminished public trust, showing that the fight against corruption is inseparable from the fight for political equality and accountability.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+         <!-- end pure grid group -->
+    <div class="paragraph-chunk">
+      <div class="pure-g">
+        <div class="pure-u-1-2">
+          <div class="description description-left">
+          <p>
+            Author: Nashal Reddy<br> 
+            Data provided by 
+            <strong><a href="https://ourworldindata.org/corruption" target="_blank">Our World in Data</a></strong> 
+            and 
+            <strong><a href="https://data.worldbank.org/indicator/NY.GDP.PCAP.CD" target="_blank">World Bank</a></strong>
+          </p>
+          </div>
+        </div>
+        <div class="pure-u-1-2">
+          <div class="description description-right">
+            <p>Date: 15/10/2025</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+  </div> <!-- end page -->
+
+  <script type="text/javascript">
+    var specVis1 = "graphs/graph-1.json";
+    var specVis19 = "graphs/graph-19.json";
+    var specVis4 = "graphs/graph-4.json";
+    var specVis5 = "graphs/graph-5.json";
+    var specVis18 = "graphs/graph-18.json";
+    var specVis16 = "graphs/graph-20.json";
+    var specVis9 = "graphs/graph-9.json";
+    var specVis14 = "graphs/graph-14.json";
+    var specVis15 = "graphs/graph-15.json";
+
+    vegaEmbed('#vis1', specVis1, { "actions": false }).then(function (result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+    vegaEmbed('#vis19', specVis19, { "actions": false }).then(function (result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+    vegaEmbed('#vis4', specVis4, { "actions": false }).then(function (result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+    vegaEmbed('#vis5', specVis5, { "actions": false }).then(function (result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+
+    vegaEmbed('#vis18', specVis18, { "actions": false }).then(function (result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+    vegaEmbed('#vis16', specVis16, { "actions": false }).then(function (result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+    vegaEmbed('#vis9', specVis9, { "actions": false }).then(function (result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+    vegaEmbed('#vis14', specVis14, { "actions": false }).then(function (result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+    vegaEmbed('#vis15', specVis15, { "actions": false }).then(function (result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+    
+  </script>
+</body>
+
+</html>
