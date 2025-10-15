@@ -46,7 +46,7 @@ html, body {
 
 
 body {
-    background-image: url('/images/background.jpg'); /* correct path to image */
+    background-image: url('images/background.jpg'); /* correct path to image */
     background-size: cover;        /* make the image cover the entire viewport */
     background-position: center;   /* center the image */
 }
@@ -117,4 +117,5 @@ h3 {
 
 p {
     text-align: left;
+
 }
